@@ -74,7 +74,7 @@ router.post('/login', loginValidation, async (req, res) => {
     }
 });
 
-router.post('/book', [apiAuth, adminAuth], async (req, res) => {
+router.post('/book', apiAuth, adminAuth, async (req, res) => {
     const {bookName, authorName, publishedYear, count} = req.body
 
     const book = await Book.findOne({bookName,authorName})
